@@ -1,0 +1,37 @@
+{
+  "name": "corus",
+  "version": "0.0.7",
+  "description": "Corus JS Client (http://corus.io)",
+  "main": "lib/index.js",
+  "files":[
+    "lib"
+  ],
+  "config": {
+    "HOST": "localhost:8080",
+    "USER": "test@start.cat",
+    "PASSWORD": "Password123"
+  },
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/startcat/corus.git"
+  },
+  "keywords": [
+    "corus"
+  ],
+  "author": "Juan Carlos Viñas <juancarlos.vinas@start.cat> (http://start.cat)",
+  "license": "Apache",
+  "bugs": {
+    "url": "https://github.com/startcat/corus/issues"
+  },
+  "homepage": "https://github.com/startcat/corus#readme",
+  "dependencies": {
+    "object-assign": "^4.0.1",
+    "request": "^2.69.0"
+  },
+  "devDependencies": {
+    "tap": "^5.4.2"
+  }
+}
