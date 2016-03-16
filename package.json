@@ -16,17 +16,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/startcat/corus.git"
+    "url": "git+https://github.com/corusio/client.git"
   },
   "keywords": [
     "corus"
   ],
-  "author": "Juan Carlos Viñas <juancarlos.vinas@start.cat> (http://start.cat)",
+  "author": "Juan Carlos Viñas <juancarlos.vinas@corus.io> (http://corus.io)",
   "license": "Apache",
   "bugs": {
-    "url": "https://github.com/startcat/corus/issues"
+    "url": "https://github.com/corusio/client/issues"
   },
-  "homepage": "https://github.com/startcat/corus#readme",
+  "homepage": "https://github.com/corusio/client#readme",
   "dependencies": {
     "object-assign": "^4.0.1",
     "request": "^2.69.0"
