@@ -4,7 +4,7 @@
 
 var tap = require('tap');
 var packageJson = require('../package.json');
-var Corus = require('..lib/index.js');
+var Corus = require('../lib/index.js');
 
 /**
  * Private
@@ -20,9 +20,11 @@ var dataItem = null;
 
 var TEST_APP_SLUG = 'corus_client_test_app';
 var TEST_COLLECTION_SLUG = 'corus_client_test_collection';
+var TEST_USERS_EMAIL = 'test_user_' + (new Date()).getTime() + '@test.com';
+
 
 /**
- * Tests
+ * Constructor
  */
 
 tap.test('Client constructor', function(test){
@@ -34,12 +36,16 @@ tap.test('Client constructor', function(test){
 
 });
 
+/**
+ * Login
+ */
+
 tap.test('Invalid login', function(test){
 
     corus.login({email: config.USER, password: 'InvalidPassword'}, function(err, user){
 
         test.true(err, 'Error not returned');
-        test.true(err.code, 'Error status code not found');
+        test.true(err.statusCode, 'Error status code not found');
         test.false(user, 'User should be undefined');
         test.end();
 
@@ -60,6 +66,10 @@ tap.test('Valid login', function(test){
 
 });
 
+/**
+ * Apps
+ */
+
 tap.test('List Apps', function(test){
 
     corus.apps().get(function(err, apps){
@@ -76,7 +86,7 @@ tap.test('Remove app', function(test){
 
     corus.apps(TEST_APP_SLUG).delete(function(err){
 
-        test.true(!err || err.code == 404, 'Error returned: ' + JSON.stringify(err));
+        test.true(!err || err.statusCode == 404, 'Error returned: ' + JSON.stringify(err));
         test.end();
 
     });
@@ -130,6 +140,10 @@ tap.test('Check updated app', function(test){
     });
 
 });
+
+/**
+ * Collections
+ */
 
 tap.test('Get collections', function(test){
 
@@ -394,6 +408,45 @@ tap.test('Filter collection items', function(test){
     });
 
 });
+
+tap.test('List app users', function(test){
+
+    corus.apps(TEST_APP_SLUG).users().get(function(err, result){
+
+        test.false(err, 'Error returned: ' + JSON.stringify(err));
+        test.true(result, 'Result is undefined');
+        test.true(result.array, 'result.array is undefined');
+        test.true(result.array.length === 0, 'result.array length should be 0');
+        test.end();
+
+    });
+
+});
+
+tap.test('Create user', function(test){
+
+    corus.users().post({email: TEST_USERS_EMAIL, name:'TEST USER'}, function(err, item){
+
+        test.false(err, 'Error returned: ' + JSON.stringify(err));
+        test.true(item, 'New user not returned');
+        test.true(item.id, 'New user does not have an email');
+        test.end();
+
+    });
+
+});
+
+tap.test('Update User App Fields', function(test){
+
+    corus.users(TEST_USERS_EMAIL).apps(TEST_APP_SLUG).put({role: 'manager'}, function(err, item){
+
+        test.false(err, 'Error returned: ' + JSON.stringify(err));
+        test.end();
+
+    });
+
+});
+
 
 
 

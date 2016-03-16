@@ -1,6 +1,6 @@
 {
   "name": "corus",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Corus JS Client (http://corus.io)",
   "main": "lib/index.js",
   "files":[
@@ -8,8 +8,8 @@
   ],
   "config": {
     "HOST": "localhost:8080",
-    "USER": "test@start.cat",
-    "PASSWORD": "Password123"
+    "USER": "test_user@start.cat",
+    "PASSWORD": "gJXr4y"
   },
   "scripts": {
     "test": "tap test/*.js"
