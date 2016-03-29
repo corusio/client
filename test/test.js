@@ -423,6 +423,10 @@ tap.test('List app users', function(test){
 
 });
 
+/**
+ * Users
+ */
+
 tap.test('Create user', function(test){
 
     corus.users().post({email: TEST_USERS_EMAIL, name:'TEST USER'}, function(err, item){
@@ -430,6 +434,20 @@ tap.test('Create user', function(test){
         test.false(err, 'Error returned: ' + JSON.stringify(err));
         test.true(item, 'New user not returned');
         test.true(item.id, 'New user does not have an email');
+        test.end();
+
+    });
+
+});
+
+
+tap.test('Get User', function(test){
+
+    corus.users(TEST_USERS_EMAIL).get(function(err, result){
+
+        test.false(err, 'Error returned: ' + JSON.stringify(err));
+        test.true(result, 'Result is undefined');
+        test.true()
         test.end();
 
     });
