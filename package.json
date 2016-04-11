@@ -3,13 +3,13 @@
   "version": "0.0.9",
   "description": "Corus JS Client (http://corus.io)",
   "main": "lib/index.js",
-  "files":[
+  "files": [
     "lib"
   ],
   "config": {
     "HOST": "localhost:8080",
     "USER": "test_user@start.cat",
-    "PASSWORD": "gJXr4y"
+    "PASSWORD": "Password123"
   },
   "scripts": {
     "test": "tap test/*.js"
@@ -29,7 +29,8 @@
   "homepage": "https://github.com/corusio/client#readme",
   "dependencies": {
     "object-assign": "^4.0.1",
-    "request": "^2.69.0"
+    "request": "^2.69.0",
+    "ws": "^1.1.0"
   },
   "devDependencies": {
     "tap": "^5.4.2"

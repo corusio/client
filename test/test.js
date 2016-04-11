@@ -13,6 +13,8 @@ var Corus = require('../lib/index.js');
 var corus = null;
 var config = packageJson.config;
 var dataItem = null;
+var channelConnection1 = null;
+var channelConnection2 = null;
 
 /**
  * Constants
@@ -464,8 +466,4 @@ tap.test('Update User App Fields', function(test){
     });
 
 });
-
-
-
-
 
