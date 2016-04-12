@@ -12,9 +12,7 @@ var Corus = require('../lib/index.js');
 
 var corus = null;
 var config = packageJson.config;
-var dataItem = null;
-var channelConnection1 = null;
-var channelConnection2 = null;
+var channel = null;
 
 /**
  * Constants
@@ -58,18 +56,37 @@ tap.test('Valid login', function(test){
 
 tap.test('Connect to channel', function(test){
 
-    var channel = corus.channels(TEST_APP_SLUG).connect();
+    channel = corus.channels(TEST_APP_SLUG).connect();
 
     channel.on('connected', function(){
 
         test.true(true, 'Connected to channel');
-        channel.send(config.USER, {});
+        channel.send(config.USER, {test: 'value1'});
 
     });
 
     channel.on('message', function(message){
 
-        test.true(message, 'Message received!');
+        test.true(message && message.data && message.data.test === 'value1', 'Message received!');
+        test.end();
+
+    });
+
+});
+
+tap.test('Post a message to channel via REST', function(test){
+
+    corus.channels(TEST_APP_SLUG).post({to: config.USER, data: {test: 'value2'}}, function(err){
+
+        test.false(err, 'Error returned: ' + JSON.stringify(err));
+
+        channel.on('message', function(message){
+
+            test.true(message && message.data && message.data.test === 'value2', 'Message received!');
+            test.end();
+
+        });
+
         test.end();
 
     });
