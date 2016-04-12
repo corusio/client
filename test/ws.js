@@ -22,7 +22,6 @@ var channelConnection2 = null;
 
 var TEST_APP_SLUG = 'test_system';
 
-
 /**
  * Constructor
  */
