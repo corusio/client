@@ -10,7 +10,7 @@ var Corus = require('../lib/index.js');
  * Private
  */
 
-var corus = null;
+var corus = corus = new Corus({host: config.HOST});
 var config = packageJson.config;
 var channel = null;
 
@@ -18,20 +18,7 @@ var channel = null;
  * Constants
  */
 
-var TEST_APP_SLUG = 'test_system';
-
-/**
- * Constructor
- */
-
-tap.test('Client constructor', function(test){
-
-    corus = new Corus({host: config.HOST});
-    test.ok(corus, 'Corus client not created');
-    test.ok(corus.login, 'Login method not found');
-    test.end();
-
-});
+var TEST_APP_SLUG = 'kit';
 
 /**
  * Login
@@ -53,6 +40,18 @@ tap.test('Valid login', function(test){
 /**
  * Channels
  */
+
+tap.test('Invalid connection to channel', function(test){
+
+    channel = corus.channels('invalid_app_slug').connect();
+
+    channel.on('error', function(err){
+
+        test.true(err, 'Error returned');
+
+    });
+
+});
 
 tap.test('Connect to channel', function(test){
 
