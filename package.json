@@ -1,6 +1,6 @@
 {
   "name": "corus",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Corus JS Client (http://corus.io)",
   "main": "lib/index.js",
   "files": [

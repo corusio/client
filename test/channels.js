@@ -75,9 +75,10 @@ tap.test('Connect to channel', function(test){
 
 tap.test('Post a message to channel via REST', function(test){
 
-    corus.channels(TEST_APP_SLUG).post({to: config.USER, data: {test: 'value2'}}, function(err){
+    corus.channels(TEST_APP_SLUG).post({to: config.USER, data: {test: 'value2'}}, function(err, sent){
 
         test.false(err, 'Error returned: ' + JSON.stringify(err));
+        test.true(sent, 'Message sent!');
 
         channel.on('message', function(message){
 
