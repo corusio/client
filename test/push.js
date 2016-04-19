@@ -10,7 +10,7 @@ var Corus = require('../lib/index.js');
  * Private
  */
 
-var corus = corus = new Corus({host: 'jsc.corus.io'});
+var corus = corus = new Corus({host: config.HOST});
 var config = packageJson.config;
 
 /**
@@ -26,7 +26,7 @@ var TEST_TARGET_PUSH_USER = 'test@start.cat';
 
 tap.test('Valid login', function(test){
 
-    corus.login({email: 'juancarlos.vinas@start.cat', password: 'StartCat'}, function(err, user){
+    corus.login({email: config.USER, password: config.PASSWORD}, function(err, user){
 
         test.false(err, 'Error returned: ' + JSON.stringify(err));
         test.true(user, 'User not returned');
@@ -47,10 +47,10 @@ tap.test('Send a push to a specific user', function(test){
 
         title:'Hola',
         body: 'Comoo va',
-        //icon: null,
-        //collapseKey: null,
-        //badge:1,
-        //sound: null,
+        icon: null,
+        collapseKey: null,
+        badge:1,
+        sound: null,
         data: {
             value1: 'value1',
             value2: 'value2'

@@ -10,8 +10,8 @@ var Corus = require('../lib/index.js');
  * Private
  */
 
-var corus = corus = new Corus({host: config.HOST});
 var config = packageJson.config;
+var corus = corus = new Corus({host: config.HOST});
 var channel = null;
 
 /**
@@ -41,7 +41,7 @@ tap.test('Valid login', function(test){
  * Channels
  */
 
-tap.test('Invalid connection to channel', function(test){
+/*tap.test('Invalid connection to channel', function(test){
 
     channel = corus.channels('invalid_app_slug').connect();
 
@@ -51,9 +51,9 @@ tap.test('Invalid connection to channel', function(test){
 
     });
 
-});
+});*/
 
-tap.test('Connect to channel', function(test){
+/*tap.test('Connect to channel', function(test){
 
     channel = corus.channels(TEST_APP_SLUG).connect();
 
@@ -71,14 +71,14 @@ tap.test('Connect to channel', function(test){
 
     });
 
-});
+});*/
 
 tap.test('Post a message to channel via REST', function(test){
 
-    corus.channels(TEST_APP_SLUG).post({to: config.USER, data: {test: 'value2'}}, function(err, sent){
+    corus.channels(TEST_APP_SLUG).post({to: config.USER, data: {test: 'value2'}}, function(err, result){
 
         test.false(err, 'Error returned: ' + JSON.stringify(err));
-        test.true(sent, 'Message sent!');
+        test.true(result && result.sent, 'Message sent!');
 
         channel.on('message', function(message){
 
