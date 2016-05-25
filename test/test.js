@@ -24,7 +24,6 @@ var TEST_APP_SLUG = 'corus_client_test_app';
 var TEST_COLLECTION_SLUG = 'corus_client_test_collection';
 var TEST_USERS_EMAIL = 'test_user_' + (new Date()).getTime() + '@test.com';
 
-
 /**
  * Constructor
  */
