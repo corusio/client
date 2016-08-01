@@ -1,6 +1,6 @@
 {
   "name": "corus",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Corus JS Client (http://corus.io)",
   "main": "lib/index.js",
   "files": [
@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/corusio/client#readme",
   "dependencies": {
+    "async": "^2.0.1",
     "object-assign": "^4.0.1",
     "request": "^2.69.0",
     "ws": "^1.1.0"
